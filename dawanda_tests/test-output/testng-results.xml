@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="179209" started-at="2016-10-18T14:04:09Z" finished-at="2016-10-18T14:07:08Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="179209" started-at="2016-10-18T14:04:09Z" finished-at="2016-10-18T14:07:08Z">
+      <class name="dawanda_tests.dawanda_login">
+        <test-method status="PASS" signature="beforeMethod()[pri:0, instance:dawanda_tests.dawanda_login@78bef]" name="beforeMethod" is-config="true" duration-ms="35982" started-at="2016-10-18T16:04:09Z" finished-at="2016-10-18T16:04:45Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="openRegistrationPage()[pri:0, instance:dawanda_tests.dawanda_login@78bef]" name="openRegistrationPage" duration-ms="139535" started-at="2016-10-18T16:04:45Z" finished-at="2016-10-18T16:07:04Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- openRegistrationPage -->
+        <test-method status="PASS" signature="afterMethod()[pri:0, instance:dawanda_tests.dawanda_login@78bef]" name="afterMethod" is-config="true" duration-ms="3626" started-at="2016-10-18T16:07:04Z" finished-at="2016-10-18T16:07:08Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- dawanda_tests.dawanda_login -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
