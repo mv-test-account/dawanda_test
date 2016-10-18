@@ -7,6 +7,7 @@
         <methods>
           <include name="beforeMethod"/>
           <include name="afterMethod"/>
+          <include name="loginTest"/>
           <include name="openRegistrationPage"/>
         </methods>
       </class> <!-- dawanda_tests.dawanda_login -->

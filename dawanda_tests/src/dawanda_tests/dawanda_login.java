@@ -28,6 +28,7 @@ import org.testng.annotations.AfterMethod;
 public class dawanda_login {
 	public WebDriver driver;
 	public String username;
+	public Boolean registrationSuccesfull = false;
 
 	@Test
 	public void openRegistrationPage() throws Exception {
@@ -35,15 +36,7 @@ public class dawanda_login {
 
 		displayElement(By.className("header-user-toggle"));
 
-		try {
-			WebElement registerButton = driver.findElement(By.cssSelector("a[href*='register']"));
-			for(int i = 0; i<3; i++){
-				if (registerButton.isDisplayed())
-					registerButton.click();
-			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
+		waitOnButton(By.cssSelector("a[href*='register']"));
 
 		waitOnElement(By.id("firstname"));
 		username = "frontend-test-user-" + random_n;
@@ -55,18 +48,14 @@ public class dawanda_login {
 		driver.findElement(By.id("password")).sendKeys("Password1");
 		driver.findElement(By.id("accept_privacy")).click();
 
-		try {
-			driver.findElement(By.id("register_submit")).click();
-		} catch (Exception e) {
-			System.out.println(e);
-		}
 
+		waitOnButton(By.id("register_submit"));
+		
 		waitOnElement(By.className(("title")));
-		System.out.println(driver.findElement(By.className(("title"))).getText()); /// doplnit
-																					/// get
-																					/// text
+		System.out.println(driver.findElement(By.className(("title"))).getText()); 
+		
 		assertTrue(driver.findElement(By.className(("title"))).getText().contains("ALMOST THERE!"));
-
+		registrationSuccesfull = true;
 		displayElement(By.className("header-user-toggle"));
 		driver.findElement(By.cssSelector("a[href='/account/logout']")).click();
 
@@ -78,13 +67,13 @@ public class dawanda_login {
 
 	@Test
 	public void loginTest() throws Exception {
-
+		
 		displayElement(By.className("header-user-toggle"));
 
 		driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
 		driver.findElement(By.cssSelector("a[href*='login']")).click();
 
-		driver.findElement(By.id("username")).sendKeys("Michal71");
+		driver.findElement(By.id("username")).sendKeys(username);
 		driver.findElement(By.id("login_credentials_password")).sendKeys("Password1");
 
 		if (driver.findElement(By.id("remember_me_checkbox")).isEnabled())
@@ -99,8 +88,6 @@ public class dawanda_login {
 		WebElement header = driver.findElement(By.className("header-user-toggle"));
 		System.out.println(header.getText());
 		assertTrue(header.getText().contains("Michal71"));
-		// text Hallo,
-		// text Michal71
 
 		displayElement(By.className("header-user-toggle"));
 
@@ -132,6 +119,20 @@ public class dawanda_login {
 
 		FileUtils.copyFile(scrFile, new File(destFile));
 
+	}
+	
+	
+	public void waitOnButton(By by) throws Exception{
+		try {
+			WebElement registerButton = driver.findElement(by);
+			for(int i = 0; i<3; i++){
+				if (registerButton.isDisplayed())
+					registerButton.click();
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+			getscreenshot("button");
+		}
 	}
 
 	@BeforeMethod
